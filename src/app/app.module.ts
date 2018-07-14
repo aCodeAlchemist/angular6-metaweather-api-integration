@@ -1,0 +1,24 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { SearchComponent } from './search/search.component';
+import { WeatherDetailsComponent } from './weather-details/weather-details.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    SearchComponent,
+    WeatherDetailsComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
