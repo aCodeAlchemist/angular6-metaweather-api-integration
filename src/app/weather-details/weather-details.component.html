@@ -1,3 +1,39 @@
-<p>
-  weather-details works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <br>
+    <h3>{{data?.title}} Temperature Info</h3>
+  </div>
+  <div class="col-md-12" *ngIf="data">
+    <div class="row">
+      <div class="col-sm-3" *ngFor="let d of data.consolidated_weather">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{d.day}}/{{d.date}}</h5>
+            <hr>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <img class="thumb" src="https://www.metaweather.com/static/img/weather/png/64/{{d.weather_state_abbr}}.png"> {{d.the_temp}}&deg;
+            </h6>
+            <p>
+              Min Temprtature: {{d.min_temp}}&deg;
+              <br> Max Temprtature: {{d.max_temp}}&deg;
+            </p>
+            <div class="showbox" *ngIf="inProgress">
+              <div class="loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="showbox" *ngIf="inProgress">
+  <div class="loader">
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+  </div>
+</div>

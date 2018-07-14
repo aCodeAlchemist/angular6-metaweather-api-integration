@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WeatherService } from '../weather.service';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-weather',
@@ -18,7 +19,7 @@ export class WeatherComponent implements OnInit {
   temp;
   inProgress = true;
 
-  constructor(private api: WeatherService) { }
+  constructor(private api: WeatherService, private router: Router) { }
 
   ngOnInit() {
     this.api.get({command: 'location', woeid: this.woeid}).subscribe(res => {
@@ -29,6 +30,10 @@ export class WeatherComponent implements OnInit {
       this.temp.the_temp = parseInt(this.temp.the_temp, 10);
       this.inProgress = false;
     });
+  }
+
+  goToDetails() {
+    this.router.navigate(['weather', this.woeid]);
   }
 
 }

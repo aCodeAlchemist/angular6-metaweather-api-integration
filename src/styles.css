@@ -2,9 +2,16 @@
 body {
     font-family: 'Nunito Sans', sans-serif;
 }
+.thumb {
+  width: 30px;
+}
 
 .card-deck {
   margin-top: 1rem
+}
+
+.card {
+  cursor: pointer;
 }
 
 .showbox {
