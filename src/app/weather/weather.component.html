@@ -1,0 +1,21 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">{{city}}</h5>
+    <hr>
+    <h6 class="card-subtitle mb-2 text-muted" *ngIf="temp">
+      <img class="thumb" src="https://www.metaweather.com/static/img/weather/png/64/{{temp?.weather_state_abbr}}.png">
+      {{temp?.the_temp}}&deg;
+    </h6>
+    <p *ngIf="temp">
+      Min Temprtature: {{temp?.min_temp}}&deg;<br>
+      Max Temprtature: {{temp?.max_temp}}&deg;
+    </p>
+    <div class="showbox" *ngIf="inProgress">
+        <div class="loader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+      </div>
+  </div>
+</div>
