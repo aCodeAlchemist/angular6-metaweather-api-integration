@@ -10,6 +10,7 @@ import { WeatherDetailsComponent } from './weather-details/weather-details.compo
 import { WeatherComponent } from './weather/weather.component';
 import { ApiService } from './api.service';
 import { WeatherService } from './weather.service';
+import { ReactiveFormsModule, FormsModule } from '../../node_modules/@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { WeatherService } from './weather.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ApiService,

@@ -1,3 +1,22 @@
-<p>
-  search works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+      <h2>Search results for: {{keyword}} </h2>
+  </div>
+  <div class="col-md-12 card-deck">
+    <div *ngFor="let c of data">
+      <app-weather [woeid]="c.woeid" [city]="c.title"></app-weather>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" *ngIf="data && data.length === 0 && !inProgress">
+    <div class="alert alert-warning">No data available for {{keyword}}.</div>
+  </div>
+</div>
+<div class="showbox" *ngIf="inProgress">
+  <div class="loader">
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+  </div>
+</div>

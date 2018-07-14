@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '../../../node_modules/@angular/router';
+import { WeatherService } from '../weather.service';
+import { WeatherData } from '../data-types';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  keyword: String;
+  data: WeatherData[];
+  inProgress = true;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private api: WeatherService
+  ) {
+    this.activatedRoute.params.subscribe(params => {
+      this.keyword = params.keyword;
+      this.triggerSearch();
+    });
+  }
 
   ngOnInit() {
+  }
+
+  triggerSearch() {
+    this.inProgress = false;
+    this.api.get({ command: 'search', keyword: this.keyword }).subscribe((res: WeatherData[]) => {
+      this.data = res;
+    });
   }
 
 }
